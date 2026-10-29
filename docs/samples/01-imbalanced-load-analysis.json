@@ -1,0 +1,1013 @@
+{
+  "run_dir": "C:\\Users\\86158\\DSH\\github\\lbprobe\\runs\\sim_realistic_20261028-183225",
+  "scenario": "sim_realistic",
+  "declared_nranks": 8,
+  "missing_ranks": [],
+  "verdict": "存在相互等待",
+  "verdict_code": "wait_mutual",
+  "verdict_detail": "同步点等待合计 11160.0 rank·ms，占 墙钟×进程数 的 68.55%；平均 5.48 个 rank 同时在等待（占 68.5%）。其中 78% 属于到齐前等待（我算完了在等其它进程），合计 **8709.8 rank·ms**（≈ 8.710 核·秒）。 等待分散在多个进程之间（最集中的 rank 5 也只占 15%），属于进程之间进度不一致造成的相互等待。",
+  "mutual_wait": true,
+  "metrics": {
+    "nranks": 8,
+    "wall_ms_global": 2035.02,
+    "wall_ms_per_rank": {
+      "0": 2035.02,
+      "1": 2018.76,
+      "2": 2013.97,
+      "3": 2004.77,
+      "4": 2004.5,
+      "5": 2001.13,
+      "6": 2001.66,
+      "7": 2001.32
+    },
+    "sync_point_count": 32,
+    "mutual_wait_ms_total": 8709.76,
+    "post_arrival_ms_total": 2450.19,
+    "wait_ms_total": 11159.96,
+    "mutual_wait_core_seconds": 8.7098,
+    "wait_core_seconds": 11.16,
+    "wait_share_pct_of_rank_time": 68.549,
+    "mutual_share_pct_of_wait": 78.04,
+    "mean_waiting_ranks": 5.484,
+    "mean_waiting_ranks_pct": 68.55,
+    "max_arrival_skew_ms": 157.99,
+    "wait_by_kind_ms": {
+      "allreduce": 9765.16,
+      "alltoallv": 1010.72,
+      "barrier": 384.08
+    },
+    "last_arriver_counts": {
+      "5": 9,
+      "0": 5,
+      "1": 4,
+      "2": 4,
+      "6": 3,
+      "7": 3,
+      "3": 3,
+      "4": 2
+    },
+    "dominant_last_arriver": 5,
+    "dominant_last_arriver_share_pct": 15.33,
+    "dominant_last_arriver_count_share_pct": 28.12,
+    "per_rank_wait_ms": {
+      "0": 1437.84,
+      "1": 1413.0,
+      "2": 1391.24,
+      "3": 1393.79,
+      "4": 1382.51,
+      "5": 1374.1,
+      "6": 1379.13,
+      "7": 1388.34
+    },
+    "per_rank_wait_share_pct": {
+      "0": 70.65,
+      "1": 69.99,
+      "2": 69.08,
+      "3": 69.52,
+      "4": 68.97,
+      "5": 68.67,
+      "6": 68.9,
+      "7": 69.37
+    },
+    "thresholds": {
+      "wait_share_pct": 5.0,
+      "mutual_share_pct": 50.0,
+      "single_rank_share_pct": 60.0
+    },
+    "parse_errors": 0,
+    "truncated_at_sync": null,
+    "p2p_block_ms_total": 0.0,
+    "p2p_calls_total": 0,
+    "p2p_max_block_ms": 0.0,
+    "p2p_share_pct_of_rank_time": 0.0,
+    "p2p_per_rank_ms": {
+      "0": 0.0,
+      "1": 0.0,
+      "2": 0.0,
+      "3": 0.0,
+      "4": 0.0,
+      "5": 0.0,
+      "6": 0.0,
+      "7": 0.0
+    },
+    "p2p_mean_waiting_ranks": 0.0,
+    "p2p_tag_count": 0,
+    "skip_ms": 0,
+    "mutual_wait_startup_ms": 0.0,
+    "mutual_wait_steady_ms": 8709.76,
+    "p2p_block_steady_ms": 0.0,
+    "p2p_calls_steady": 0,
+    "collective_mean_waiting_ranks": 5.484,
+    "iterations": 0,
+    "mutual_wait_per_iter": null,
+    "p2p_block_per_iter": null,
+    "p2p_steady_per_iter": null,
+    "mutual_steady_per_iter": null
+  },
+  "sync_points": [
+    {
+      "kind": "allreduce",
+      "tag": 1000,
+      "occurrence": 0,
+      "n_ranks": 8,
+      "arrival_skew_ms": 140.965,
+      "mutual_wait_ms": 909.642,
+      "post_arrival_ms": 124.605,
+      "wait_ms": 1034.247,
+      "last_arriver": [
+        0
+      ],
+      "max_rank_wait_ms": 158.282,
+      "t_first": 1793183545469.504,
+      "t_last": 1793183545610.469
+    },
+    {
+      "kind": "allreduce",
+      "tag": 1001,
+      "occurrence": 0,
+      "n_ranks": 8,
+      "arrival_skew_ms": 16.499,
+      "mutual_wait_ms": 20.416,
+      "post_arrival_ms": 69.573,
+      "wait_ms": 89.989,
+      "last_arriver": [
+        5
+      ],
+      "max_rank_wait_ms": 31.55,
+      "t_first": 1793183545612.136,
+      "t_last": 1793183545628.635
+    },
+    {
+      "kind": "alltoallv",
+      "tag": 1002,
+      "occurrence": 0,
+      "n_ranks": 8,
+      "arrival_skew_ms": 12.368,
+      "mutual_wait_ms": 51.149,
+      "post_arrival_ms": 82.363,
+      "wait_ms": 133.511,
+      "last_arriver": [
+        0
+      ],
+      "max_rank_wait_ms": 26.267,
+      "t_first": 1793183545631.395,
+      "t_last": 1793183545643.763
+    },
+    {
+      "kind": "barrier",
+      "tag": 2000,
+      "occurrence": 0,
+      "n_ranks": 8,
+      "arrival_skew_ms": 15.789,
+      "mutual_wait_ms": 63.033,
+      "post_arrival_ms": 68.622,
+      "wait_ms": 131.655,
+      "last_arriver": [
+        5
+      ],
+      "max_rank_wait_ms": 31.443,
+      "t_first": 1793183545657.235,
+      "t_last": 1793183545673.024
+    },
+    {
+      "kind": "allreduce",
+      "tag": 1010,
+      "occurrence": 0,
+      "n_ranks": 8,
+      "arrival_skew_ms": 154.688,
+      "mutual_wait_ms": 1036.589,
+      "post_arrival_ms": 115.945,
+      "wait_ms": 1152.534,
+      "last_arriver": [
+        1
+      ],
+      "max_rank_wait_ms": 170.987,
+      "t_first": 1793183545718.192,
+      "t_last": 1793183545872.88
+    },
+    {
+      "kind": "allreduce",
+      "tag": 1011,
+      "occurrence": 0,
+      "n_ranks": 8,
+      "arrival_skew_ms": 15.07,
+      "mutual_wait_ms": 16.752,
+      "post_arrival_ms": 91.905,
+      "wait_ms": 108.657,
+      "last_arriver": [
+        2
+      ],
+      "max_rank_wait_ms": 29.719,
+      "t_first": 1793183545874.416,
+      "t_last": 1793183545889.486
+    },
+    {
+      "kind": "alltoallv",
+      "tag": 1012,
+      "occurrence": 0,
+      "n_ranks": 8,
+      "arrival_skew_ms": 12.278,
+      "mutual_wait_ms": 25.31,
+      "post_arrival_ms": 88.339,
+      "wait_ms": 113.65,
+      "last_arriver": [
+        0
+      ],
+      "max_rank_wait_ms": 26.126,
+      "t_first": 1793183545891.885,
+      "t_last": 1793183545904.163
+    },
+    {
+      "kind": "barrier",
+      "tag": 2001,
+      "occurrence": 0,
+      "n_ranks": 8,
+      "arrival_skew_ms": 0.09,
+      "mutual_wait_ms": 0.437,
+      "post_arrival_ms": 18.437,
+      "wait_ms": 18.874,
+      "last_arriver": [
+        2
+      ],
+      "max_rank_wait_ms": 2.446,
+      "t_first": 1793183545932.918,
+      "t_last": 1793183545933.008
+    },
+    {
+      "kind": "allreduce",
+      "tag": 1020,
+      "occurrence": 0,
+      "n_ranks": 8,
+      "arrival_skew_ms": 140.371,
+      "mutual_wait_ms": 981.569,
+      "post_arrival_ms": 124.033,
+      "wait_ms": 1105.602,
+      "last_arriver": [
+        2
+      ],
+      "max_rank_wait_ms": 158.079,
+      "t_first": 1793183545979.715,
+      "t_last": 1793183546120.086
+    },
+    {
+      "kind": "allreduce",
+      "tag": 1021,
+      "occurrence": 0,
+      "n_ranks": 8,
+      "arrival_skew_ms": 16.459,
+      "mutual_wait_ms": 18.143,
+      "post_arrival_ms": 84.111,
+      "wait_ms": 102.255,
+      "last_arriver": [
+        6
+      ],
+      "max_rank_wait_ms": 31.429,
+      "t_first": 1793183546121.424,
+      "t_last": 1793183546137.883
+    },
+    {
+      "kind": "alltoallv",
+      "tag": 1022,
+      "occurrence": 0,
+      "n_ranks": 8,
+      "arrival_skew_ms": 13.154,
+      "mutual_wait_ms": 43.969,
+      "post_arrival_ms": 79.62,
+      "wait_ms": 123.59,
+      "last_arriver": [
+        7
+      ],
+      "max_rank_wait_ms": 26.698,
+      "t_first": 1793183546140.76,
+      "t_last": 1793183546153.914
+    },
+    {
+      "kind": "barrier",
+      "tag": 2002,
+      "occurrence": 0,
+      "n_ranks": 8,
+      "arrival_skew_ms": 0.158,
+      "mutual_wait_ms": 0.365,
+      "post_arrival_ms": 24.265,
+      "wait_ms": 24.629,
+      "last_arriver": [
+        0
+      ],
+      "max_rank_wait_ms": 3.187,
+      "t_first": 1793183546182.789,
+      "t_last": 1793183546182.947
+    },
+    {
+      "kind": "allreduce",
+      "tag": 1030,
+      "occurrence": 0,
+      "n_ranks": 8,
+      "arrival_skew_ms": 141.973,
+      "mutual_wait_ms": 993.031,
+      "post_arrival_ms": 121.347,
+      "wait_ms": 1114.378,
+      "last_arriver": [
+        3
+      ],
+      "max_rank_wait_ms": 159.346,
+      "t_first": 1793183546229.245,
+      "t_last": 1793183546371.218
+    },
+    {
+      "kind": "allreduce",
+      "tag": 1031,
+      "occurrence": 0,
+      "n_ranks": 8,
+      "arrival_skew_ms": 15.619,
+      "mutual_wait_ms": 18.771,
+      "post_arrival_ms": 94.58,
+      "wait_ms": 113.351,
+      "last_arriver": [
+        4
+      ],
+      "max_rank_wait_ms": 30.585,
+      "t_first": 1793183546373.138,
+      "t_last": 1793183546388.757
+    },
+    {
+      "kind": "alltoallv",
+      "tag": 1032,
+      "occurrence": 0,
+      "n_ranks": 8,
+      "arrival_skew_ms": 13.036,
+      "mutual_wait_ms": 27.049,
+      "post_arrival_ms": 92.353,
+      "wait_ms": 119.402,
+      "last_arriver": [
+        2
+      ],
+      "max_rank_wait_ms": 28.19,
+      "t_first": 1793183546390.946,
+      "t_last": 1793183546403.982
+    },
+    {
+      "kind": "barrier",
+      "tag": 2003,
+      "occurrence": 0,
+      "n_ranks": 8,
+      "arrival_skew_ms": 0.198,
+      "mutual_wait_ms": 0.651,
+      "post_arrival_ms": 34.454,
+      "wait_ms": 35.104,
+      "last_arriver": [
+        1
+      ],
+      "max_rank_wait_ms": 16.239,
+      "t_first": 1793183546433.729,
+      "t_last": 1793183546433.927
+    },
+    {
+      "kind": "allreduce",
+      "tag": 1040,
+      "occurrence": 0,
+      "n_ranks": 8,
+      "arrival_skew_ms": 157.989,
+      "mutual_wait_ms": 1105.337,
+      "post_arrival_ms": 60.22,
+      "wait_ms": 1165.557,
+      "last_arriver": [
+        4
+      ],
+      "max_rank_wait_ms": 174.92,
+      "t_first": 1793183546480.87,
+      "t_last": 1793183546638.859
+    },
+    {
+      "kind": "allreduce",
+      "tag": 1041,
+      "occurrence": 0,
+      "n_ranks": 8,
+      "arrival_skew_ms": 15.207,
+      "mutual_wait_ms": 75.465,
+      "post_arrival_ms": 86.54,
+      "wait_ms": 162.005,
+      "last_arriver": [
+        1
+      ],
+      "max_rank_wait_ms": 31.367,
+      "t_first": 1793183546640.635,
+      "t_last": 1793183546655.842
+    },
+    {
+      "kind": "alltoallv",
+      "tag": 1042,
+      "occurrence": 0,
+      "n_ranks": 8,
+      "arrival_skew_ms": 14.424,
+      "mutual_wait_ms": 43.902,
+      "post_arrival_ms": 100.257,
+      "wait_ms": 144.16,
+      "last_arriver": [
+        5
+      ],
+      "max_rank_wait_ms": 29.457,
+      "t_first": 1793183546657.746,
+      "t_last": 1793183546672.17
+    },
+    {
+      "kind": "barrier",
+      "tag": 2004,
+      "occurrence": 0,
+      "n_ranks": 8,
+      "arrival_skew_ms": 0.145,
+      "mutual_wait_ms": 0.501,
+      "post_arrival_ms": 26.086,
+      "wait_ms": 26.587,
+      "last_arriver": [
+        3
+      ],
+      "max_rank_wait_ms": 3.495,
+      "t_first": 1793183546701.738,
+      "t_last": 1793183546701.883
+    },
+    {
+      "kind": "allreduce",
+      "tag": 1050,
+      "occurrence": 0,
+      "n_ranks": 8,
+      "arrival_skew_ms": 141.768,
+      "mutual_wait_ms": 991.751,
+      "post_arrival_ms": 104.888,
+      "wait_ms": 1096.639,
+      "last_arriver": [
+        5
+      ],
+      "max_rank_wait_ms": 158.871,
+      "t_first": 1793183546749.168,
+      "t_last": 1793183546890.936
+    },
+    {
+      "kind": "allreduce",
+      "tag": 1051,
+      "occurrence": 0,
+      "n_ranks": 8,
+      "arrival_skew_ms": 15.537,
+      "mutual_wait_ms": 32.182,
+      "post_arrival_ms": 79.137,
+      "wait_ms": 111.319,
+      "last_arriver": [
+        0
+      ],
+      "max_rank_wait_ms": 30.315,
+      "t_first": 1793183546892.554,
+      "t_last": 1793183546908.091
+    },
+    {
+      "kind": "alltoallv",
+      "tag": 1052,
+      "occurrence": 0,
+      "n_ranks": 8,
+      "arrival_skew_ms": 12.816,
+      "mutual_wait_ms": 39.059,
+      "post_arrival_ms": 92.164,
+      "wait_ms": 131.223,
+      "last_arriver": [
+        3
+      ],
+      "max_rank_wait_ms": 27.954,
+      "t_first": 1793183546910.07,
+      "t_last": 1793183546922.886
+    },
+    {
+      "kind": "barrier",
+      "tag": 2005,
+      "occurrence": 0,
+      "n_ranks": 8,
+      "arrival_skew_ms": 0.157,
+      "mutual_wait_ms": 0.546,
+      "post_arrival_ms": 21.314,
+      "wait_ms": 21.86,
+      "last_arriver": [
+        5
+      ],
+      "max_rank_wait_ms": 2.864,
+      "t_first": 1793183546952.422,
+      "t_last": 1793183546952.579
+    },
+    {
+      "kind": "allreduce",
+      "tag": 1060,
+      "occurrence": 0,
+      "n_ranks": 8,
+      "arrival_skew_ms": 138.105,
+      "mutual_wait_ms": 966.1,
+      "post_arrival_ms": 60.879,
+      "wait_ms": 1026.979,
+      "last_arriver": [
+        6
+      ],
+      "max_rank_wait_ms": 155.331,
+      "t_first": 1793183546999.493,
+      "t_last": 1793183547137.598
+    },
+    {
+      "kind": "allreduce",
+      "tag": 1061,
+      "occurrence": 0,
+      "n_ranks": 8,
+      "arrival_skew_ms": 15.672,
+      "mutual_wait_ms": 77.367,
+      "post_arrival_ms": 77.367,
+      "wait_ms": 154.734,
+      "last_arriver": [
+        5
+      ],
+      "max_rank_wait_ms": 30.299,
+      "t_first": 1793183547139.229,
+      "t_last": 1793183547154.901
+    },
+    {
+      "kind": "alltoallv",
+      "tag": 1062,
+      "occurrence": 0,
+      "n_ranks": 8,
+      "arrival_skew_ms": 13.116,
+      "mutual_wait_ms": 39.563,
+      "post_arrival_ms": 89.727,
+      "wait_ms": 129.289,
+      "last_arriver": [
+        1
+      ],
+      "max_rank_wait_ms": 28.235,
+      "t_first": 1793183547156.454,
+      "t_last": 1793183547169.57
+    },
+    {
+      "kind": "barrier",
+      "tag": 2006,
+      "occurrence": 0,
+      "n_ranks": 8,
+      "arrival_skew_ms": 15.208,
+      "mutual_wait_ms": 30.964,
+      "post_arrival_ms": 60.92,
+      "wait_ms": 91.885,
+      "last_arriver": [
+        5
+      ],
+      "max_rank_wait_ms": 31.416,
+      "t_first": 1793183547184.358,
+      "t_last": 1793183547199.566
+    },
+    {
+      "kind": "allreduce",
+      "tag": 1070,
+      "occurrence": 0,
+      "n_ranks": 8,
+      "arrival_skew_ms": 139.376,
+      "mutual_wait_ms": 975.406,
+      "post_arrival_ms": 26.893,
+      "wait_ms": 1002.299,
+      "last_arriver": [
+        7
+      ],
+      "max_rank_wait_ms": 156.099,
+      "t_first": 1793183547246.029,
+      "t_last": 1793183547385.405
+    },
+    {
+      "kind": "allreduce",
+      "tag": 1071,
+      "occurrence": 0,
+      "n_ranks": 8,
+      "arrival_skew_ms": 15.54,
+      "mutual_wait_ms": 106.893,
+      "post_arrival_ms": 117.723,
+      "wait_ms": 224.616,
+      "last_arriver": [
+        5
+      ],
+      "max_rank_wait_ms": 32.176,
+      "t_first": 1793183547386.61,
+      "t_last": 1793183547402.15
+    },
+    {
+      "kind": "alltoallv",
+      "tag": 1072,
+      "occurrence": 0,
+      "n_ranks": 8,
+      "arrival_skew_ms": 15.792,
+      "mutual_wait_ms": 17.402,
+      "post_arrival_ms": 98.488,
+      "wait_ms": 115.89,
+      "last_arriver": [
+        7
+      ],
+      "max_rank_wait_ms": 30.198,
+      "t_first": 1793183547403.272,
+      "t_last": 1793183547419.064
+    },
+    {
+      "kind": "barrier",
+      "tag": 2007,
+      "occurrence": 0,
+      "n_ranks": 8,
+      "arrival_skew_ms": 0.178,
+      "mutual_wait_ms": 0.446,
+      "post_arrival_ms": 33.04,
+      "wait_ms": 33.486,
+      "last_arriver": [
+        5,
+        6
+      ],
+      "max_rank_wait_ms": 15.401,
+      "t_first": 1793183547449.182,
+      "t_last": 1793183547449.36
+    }
+  ],
+  "p2p_summary": [],
+  "tag_summary": [
+    {
+      "tag": 1040,
+      "kind": "allreduce",
+      "count": 1,
+      "n_ranks": [
+        8
+      ],
+      "mutual_wait_ms": 1105.34,
+      "post_arrival_ms": 60.22,
+      "wait_ms": 1165.56,
+      "max_skew_ms": 157.99
+    },
+    {
+      "tag": 1010,
+      "kind": "allreduce",
+      "count": 1,
+      "n_ranks": [
+        8
+      ],
+      "mutual_wait_ms": 1036.59,
+      "post_arrival_ms": 115.94,
+      "wait_ms": 1152.53,
+      "max_skew_ms": 154.69
+    },
+    {
+      "tag": 1030,
+      "kind": "allreduce",
+      "count": 1,
+      "n_ranks": [
+        8
+      ],
+      "mutual_wait_ms": 993.03,
+      "post_arrival_ms": 121.35,
+      "wait_ms": 1114.38,
+      "max_skew_ms": 141.97
+    },
+    {
+      "tag": 1050,
+      "kind": "allreduce",
+      "count": 1,
+      "n_ranks": [
+        8
+      ],
+      "mutual_wait_ms": 991.75,
+      "post_arrival_ms": 104.89,
+      "wait_ms": 1096.64,
+      "max_skew_ms": 141.77
+    },
+    {
+      "tag": 1020,
+      "kind": "allreduce",
+      "count": 1,
+      "n_ranks": [
+        8
+      ],
+      "mutual_wait_ms": 981.57,
+      "post_arrival_ms": 124.03,
+      "wait_ms": 1105.6,
+      "max_skew_ms": 140.37
+    },
+    {
+      "tag": 1070,
+      "kind": "allreduce",
+      "count": 1,
+      "n_ranks": [
+        8
+      ],
+      "mutual_wait_ms": 975.41,
+      "post_arrival_ms": 26.89,
+      "wait_ms": 1002.3,
+      "max_skew_ms": 139.38
+    },
+    {
+      "tag": 1060,
+      "kind": "allreduce",
+      "count": 1,
+      "n_ranks": [
+        8
+      ],
+      "mutual_wait_ms": 966.1,
+      "post_arrival_ms": 60.88,
+      "wait_ms": 1026.98,
+      "max_skew_ms": 138.1
+    },
+    {
+      "tag": 1000,
+      "kind": "allreduce",
+      "count": 1,
+      "n_ranks": [
+        8
+      ],
+      "mutual_wait_ms": 909.64,
+      "post_arrival_ms": 124.61,
+      "wait_ms": 1034.25,
+      "max_skew_ms": 140.97
+    },
+    {
+      "tag": 1071,
+      "kind": "allreduce",
+      "count": 1,
+      "n_ranks": [
+        8
+      ],
+      "mutual_wait_ms": 106.89,
+      "post_arrival_ms": 117.72,
+      "wait_ms": 224.62,
+      "max_skew_ms": 15.54
+    },
+    {
+      "tag": 1061,
+      "kind": "allreduce",
+      "count": 1,
+      "n_ranks": [
+        8
+      ],
+      "mutual_wait_ms": 77.37,
+      "post_arrival_ms": 77.37,
+      "wait_ms": 154.73,
+      "max_skew_ms": 15.67
+    },
+    {
+      "tag": 1041,
+      "kind": "allreduce",
+      "count": 1,
+      "n_ranks": [
+        8
+      ],
+      "mutual_wait_ms": 75.47,
+      "post_arrival_ms": 86.54,
+      "wait_ms": 162.0,
+      "max_skew_ms": 15.21
+    },
+    {
+      "tag": 2000,
+      "kind": "barrier",
+      "count": 1,
+      "n_ranks": [
+        8
+      ],
+      "mutual_wait_ms": 63.03,
+      "post_arrival_ms": 68.62,
+      "wait_ms": 131.66,
+      "max_skew_ms": 15.79
+    },
+    {
+      "tag": 1002,
+      "kind": "alltoallv",
+      "count": 1,
+      "n_ranks": [
+        8
+      ],
+      "mutual_wait_ms": 51.15,
+      "post_arrival_ms": 82.36,
+      "wait_ms": 133.51,
+      "max_skew_ms": 12.37
+    },
+    {
+      "tag": 1022,
+      "kind": "alltoallv",
+      "count": 1,
+      "n_ranks": [
+        8
+      ],
+      "mutual_wait_ms": 43.97,
+      "post_arrival_ms": 79.62,
+      "wait_ms": 123.59,
+      "max_skew_ms": 13.15
+    },
+    {
+      "tag": 1042,
+      "kind": "alltoallv",
+      "count": 1,
+      "n_ranks": [
+        8
+      ],
+      "mutual_wait_ms": 43.9,
+      "post_arrival_ms": 100.26,
+      "wait_ms": 144.16,
+      "max_skew_ms": 14.42
+    },
+    {
+      "tag": 1062,
+      "kind": "alltoallv",
+      "count": 1,
+      "n_ranks": [
+        8
+      ],
+      "mutual_wait_ms": 39.56,
+      "post_arrival_ms": 89.73,
+      "wait_ms": 129.29,
+      "max_skew_ms": 13.12
+    },
+    {
+      "tag": 1052,
+      "kind": "alltoallv",
+      "count": 1,
+      "n_ranks": [
+        8
+      ],
+      "mutual_wait_ms": 39.06,
+      "post_arrival_ms": 92.16,
+      "wait_ms": 131.22,
+      "max_skew_ms": 12.82
+    },
+    {
+      "tag": 1051,
+      "kind": "allreduce",
+      "count": 1,
+      "n_ranks": [
+        8
+      ],
+      "mutual_wait_ms": 32.18,
+      "post_arrival_ms": 79.14,
+      "wait_ms": 111.32,
+      "max_skew_ms": 15.54
+    },
+    {
+      "tag": 2006,
+      "kind": "barrier",
+      "count": 1,
+      "n_ranks": [
+        8
+      ],
+      "mutual_wait_ms": 30.96,
+      "post_arrival_ms": 60.92,
+      "wait_ms": 91.89,
+      "max_skew_ms": 15.21
+    },
+    {
+      "tag": 1032,
+      "kind": "alltoallv",
+      "count": 1,
+      "n_ranks": [
+        8
+      ],
+      "mutual_wait_ms": 27.05,
+      "post_arrival_ms": 92.35,
+      "wait_ms": 119.4,
+      "max_skew_ms": 13.04
+    },
+    {
+      "tag": 1012,
+      "kind": "alltoallv",
+      "count": 1,
+      "n_ranks": [
+        8
+      ],
+      "mutual_wait_ms": 25.31,
+      "post_arrival_ms": 88.34,
+      "wait_ms": 113.65,
+      "max_skew_ms": 12.28
+    },
+    {
+      "tag": 1001,
+      "kind": "allreduce",
+      "count": 1,
+      "n_ranks": [
+        8
+      ],
+      "mutual_wait_ms": 20.42,
+      "post_arrival_ms": 69.57,
+      "wait_ms": 89.99,
+      "max_skew_ms": 16.5
+    },
+    {
+      "tag": 1031,
+      "kind": "allreduce",
+      "count": 1,
+      "n_ranks": [
+        8
+      ],
+      "mutual_wait_ms": 18.77,
+      "post_arrival_ms": 94.58,
+      "wait_ms": 113.35,
+      "max_skew_ms": 15.62
+    },
+    {
+      "tag": 1021,
+      "kind": "allreduce",
+      "count": 1,
+      "n_ranks": [
+        8
+      ],
+      "mutual_wait_ms": 18.14,
+      "post_arrival_ms": 84.11,
+      "wait_ms": 102.25,
+      "max_skew_ms": 16.46
+    },
+    {
+      "tag": 1072,
+      "kind": "alltoallv",
+      "count": 1,
+      "n_ranks": [
+        8
+      ],
+      "mutual_wait_ms": 17.4,
+      "post_arrival_ms": 98.49,
+      "wait_ms": 115.89,
+      "max_skew_ms": 15.79
+    },
+    {
+      "tag": 1011,
+      "kind": "allreduce",
+      "count": 1,
+      "n_ranks": [
+        8
+      ],
+      "mutual_wait_ms": 16.75,
+      "post_arrival_ms": 91.91,
+      "wait_ms": 108.66,
+      "max_skew_ms": 15.07
+    },
+    {
+      "tag": 2003,
+      "kind": "barrier",
+      "count": 1,
+      "n_ranks": [
+        8
+      ],
+      "mutual_wait_ms": 0.65,
+      "post_arrival_ms": 34.45,
+      "wait_ms": 35.1,
+      "max_skew_ms": 0.2
+    },
+    {
+      "tag": 2005,
+      "kind": "barrier",
+      "count": 1,
+      "n_ranks": [
+        8
+      ],
+      "mutual_wait_ms": 0.55,
+      "post_arrival_ms": 21.31,
+      "wait_ms": 21.86,
+      "max_skew_ms": 0.16
+    },
+    {
+      "tag": 2004,
+      "kind": "barrier",
+      "count": 1,
+      "n_ranks": [
+        8
+      ],
+      "mutual_wait_ms": 0.5,
+      "post_arrival_ms": 26.09,
+      "wait_ms": 26.59,
+      "max_skew_ms": 0.14
+    },
+    {
+      "tag": 2007,
+      "kind": "barrier",
+      "count": 1,
+      "n_ranks": [
+        8
+      ],
+      "mutual_wait_ms": 0.45,
+      "post_arrival_ms": 33.04,
+      "wait_ms": 33.49,
+      "max_skew_ms": 0.18
+    },
+    {
+      "tag": 2001,
+      "kind": "barrier",
+      "count": 1,
+      "n_ranks": [
+        8
+      ],
+      "mutual_wait_ms": 0.44,
+      "post_arrival_ms": 18.44,
+      "wait_ms": 18.87,
+      "max_skew_ms": 0.09
+    },
+    {
+      "tag": 2002,
+      "kind": "barrier",
+      "count": 1,
+      "n_ranks": [
+        8
+      ],
+      "mutual_wait_ms": 0.36,
+      "post_arrival_ms": 24.27,
+      "wait_ms": 24.63,
+      "max_skew_ms": 0.16
+    }
+  ],
+  "unmatched_intervals": [],
+  "unclosed_enters": [],
+  "missing_finalize": [],
+  "parse_errors": []
+}

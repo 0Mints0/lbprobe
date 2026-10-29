@@ -1,0 +1,60 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build-and-selfcheck:
+    name: 编译 + 仿真自检
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 编译仿真后端（不需要 MPI）
+        run: make
+
+      - name: MPI 分支语法检查（用 tests/fake_mpi 的桩 mpi.h）
+        run: |
+          gcc -fsyntax-only -DLBPROBE_HAVE_MPI -Iinclude -Itests/fake_mpi \
+              -std=c99 -D_POSIX_C_SOURCE=200809L src/lbprobe.c
+          gcc -fsyntax-only -DLBPROBE_HAVE_MPI -Iinclude -Itests/fake_mpi \
+              -std=c99 -D_POSIX_C_SOURCE=200809L examples/lb_minimal_mpi.c
+
+      - name: 生成单文件版并自检
+        run: |
+          python3 tools/make_single.py
+          cp lbprobe_single.h /tmp/lbprobe.h
+          gcc -O2 -Wall -Wextra -DLBPROBE_IMPLEMENTATION -I/tmp -Itests/fake_mpi \
+              -std=gnu99 tests/single_check.c -o /tmp/single_check -lm
+          /tmp/single_check
+
+      - name: 跑 4 个仿真算例并生成报告
+        run: make sim-all
+
+      - name: 校验拆分恒等式与日志完整性
+        run: |
+          python3 - <<'PY'
+          import glob, json, sys
+          bad = []
+          for f in sorted(glob.glob("runs/*/analysis.json")):
+              a = json.load(open(f, encoding="utf-8"))
+              m = a["metrics"]
+              diff = abs(m["wait_ms_total"] - (m["mutual_wait_ms_total"] + m["post_arrival_ms_total"]))
+              ok = m["parse_errors"] == 0 and diff < 0.05
+              print("%-18s %-8s mutual=%10.1f  identity_diff=%.6f" % (
+                  a["scenario"], "OK" if ok else "FAIL", m["mutual_wait_ms_total"], diff))
+              if not ok:
+                  bad.append(a["scenario"])
+          sys.exit(1 if bad else 0)
+          PY
+
+      - name: 保存样例报告
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sim-reports
+          path: runs/*/report.md
+          if-no-files-found: warn

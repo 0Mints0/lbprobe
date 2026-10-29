@@ -1,0 +1,15 @@
+# 统一用 LF 入库：shell 脚本在 Windows 上被 CRLF 化会导致 "bad interpreter" 类问题
+* text=auto eol=lf
+
+*.sh   text eol=lf
+*.pbs  text eol=lf
+*.c    text eol=lf
+*.h    text eol=lf
+*.py   text eol=lf
+*.md   text eol=lf
+*.yml  text eol=lf
+Makefile text eol=lf
+
+*.json linguist-language=JSON
+*.docx binary
+*.png  binary

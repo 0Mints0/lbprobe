@@ -1,0 +1,28 @@
+# 构建产物
+build/
+*.o
+*.obj
+*.exe
+*.out
+a.out
+
+# 生成的单文件版（用 python3 tools/make_single.py 生成，不入库）
+lbprobe_single.h
+
+# 运行数据：事件日志与报告都不入库
+runs/
+lbout/
+lbprobe_out/
+events.rank*.jsonl
+analysis.json
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
