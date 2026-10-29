@@ -707,10 +707,14 @@ def main():
     a = analyze(args.run_dir, args.wait_threshold, args.mutual_threshold,
                 args.single_rank_threshold, args.skip_ms, args.iterations)
 
-    with open(os.path.join(args.run_dir, "analysis.json"), "w", encoding="utf-8") as f:
+    # newline="\n"：Windows 上默认会把 \n 翻成 \r\n，而 .gitattributes 又把入库内容归一化成 LF，
+    # 结果是磁盘上的文件与仓库里的文件字节不一致、git diff 永远显示"改过"。统一按 LF 写。
+    with open(os.path.join(args.run_dir, "analysis.json"), "w", encoding="utf-8",
+              newline="\n") as f:
         json.dump(a, f, ensure_ascii=False, indent=2)
     rep = render_report(a)
-    with open(os.path.join(args.run_dir, "report.md"), "w", encoding="utf-8") as f:
+    with open(os.path.join(args.run_dir, "report.md"), "w", encoding="utf-8",
+              newline="\n") as f:
         f.write(rep)
 
     if args.json:
