@@ -175,11 +175,31 @@ src/lbprobe.c            探针实现（326 行）：时钟、事件日志、等
 src/lbprobe_sim.c        仿真后端（无 MPI 时用假集合通信，仅供本机/CI 验证）
 examples/lb_minimal_mpi.c  独立最小示例
 tools/lb_analyze.py      离线分析器（仅标准库）→ report.md / analysis.json
+tools/check_reports.py   管线自检：拆分恒等式 / 日志完整性 / 进程数一致
 tools/make_single.py     生成单文件版 lbprobe_single.h
 tools/run_all.sh         集群批量跑法
 tools/run_all_sim.sh     本机仿真跑法
 tests/lb_scenarios.c     4 个合成算例（含单向等待、均匀负载等对照）
 tests/single_check.c     单文件版自检
+.github/workflows/ci.yml CI：编译 + MPI 桩语法检查 + 单文件版自检 + 4 算例 + 管线自检
+```
+
+### 自检工具
+
+`tools/check_reports.py` 检查的是**测量链路本身可不可信**，不是被测代码。CI 里每次都会跑：
+
+```sh
+python3 tools/check_reports.py runs
+```
+
+```
+== sim_realistic ==
+   [OK  ] 拆分恒等式              total=11159.9600 vs mutual+post=11159.9500 (diff=0.010000, tol=0.0500)
+   [OK  ] 到齐前等待 <= 合计        mutual=8709.7600, total=11159.9600
+   [OK  ] 各 rank 求和 == 合计    sum(per_rank)=11159.9500 vs total=11159.9600 (8 个 rank)
+   [OK  ] 日志完整性              非法行=0 缺失rank=无 未收尾=无 未配对enter=无
+   [OK  ] 进程数一致              声明=8 实收=8
+   [OK  ] 采集截断标记             未截断（覆盖整个运行）
 ```
 
 ## 边界与已知限制

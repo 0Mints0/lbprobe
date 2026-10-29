@@ -24,32 +24,21 @@ jobs:
               -std=c99 -D_POSIX_C_SOURCE=200809L examples/lb_minimal_mpi.c
 
       - name: 生成单文件版并自检
+        # 注意两点：
+        #  - 生成物 lbprobe_single.h 落在仓库根，而 single_check.c 里 include 的是它，
+        #    所以必须给 -I.（编译器不会在当前工作目录里找引号包含的头文件）
+        #  - 单文件版里只有探针本体，仿真后端的 lbsim_* 在 src/lbprobe_sim.c，要一起链接
         run: |
           python3 tools/make_single.py
-          cp lbprobe_single.h /tmp/lbprobe.h
-          gcc -O2 -Wall -Wextra -DLBPROBE_IMPLEMENTATION -I/tmp -Itests/fake_mpi \
-              -std=gnu99 tests/single_check.c -o /tmp/single_check -lm
+          gcc -O2 -Wall -Wextra -I. -Iinclude -std=gnu99 \
+              tests/single_check.c src/lbprobe_sim.c -o /tmp/single_check -lm
           /tmp/single_check
 
       - name: 跑 4 个仿真算例并生成报告
         run: make sim-all
 
-      - name: 校验拆分恒等式与日志完整性
-        run: |
-          python3 - <<'PY'
-          import glob, json, sys
-          bad = []
-          for f in sorted(glob.glob("runs/*/analysis.json")):
-              a = json.load(open(f, encoding="utf-8"))
-              m = a["metrics"]
-              diff = abs(m["wait_ms_total"] - (m["mutual_wait_ms_total"] + m["post_arrival_ms_total"]))
-              ok = m["parse_errors"] == 0 and diff < 0.05
-              print("%-18s %-8s mutual=%10.1f  identity_diff=%.6f" % (
-                  a["scenario"], "OK" if ok else "FAIL", m["mutual_wait_ms_total"], diff))
-              if not ok:
-                  bad.append(a["scenario"])
-          sys.exit(1 if bad else 0)
-          PY
+      - name: 管线自检（拆分恒等式 / 日志完整性 / 进程数一致）
+        run: python3 tools/check_reports.py runs
 
       - name: 保存样例报告
         if: always()
